@@ -1,0 +1,54 @@
+@CHARSET "UTF-8";
+.search_btn {
+  background:  url('search.png') no-repeat  center;
+}
+.lock {
+  background:  url('lock.gif') no-repeat  center;
+}
+.unlock {
+  background:  url('unlock.gif') no-repeat  center;
+}
+
+.add_btn {
+  background:  url('drop-add.gif') no-repeat  center;
+}
+.update_btn {
+  background:  url('edit.gif') no-repeat  center;
+}
+.del_btn {
+  background:  url('delete.gif') no-repeat  center;
+}
+.detail_btn{
+ background:  url('detail.png') no-repeat  center;
+}
+.set_btn {
+  background: #E0ECFF url('set.png') no-repeat  center;
+}
+.export_btn {
+  background: #E0ECFF url('export.png') no-repeat  center;
+}
+.print_btn {
+  background: #E0ECFF url('print.png') no-repeat  center;
+}
+.user_btn {
+   background: #E0ECFF url('user.jpg') no-repeat  center;
+}
+.yellow_btn {
+   background: #E0ECFF url('yellow.png') no-repeat  center;
+}
+.green_btn {
+   background: #E0ECFF url('green.png') no-repeat  center;
+}
+.red_btn {
+   background: #E0ECFF url('red.png') no-repeat  center;
+}
+.save_btn {
+   background: #E0ECFF url('save.gif') no-repeat  center;
+}
+.poweroff_btn {
+   background: #E0ECFF url('poweroff.png') no-repeat  center;
+}
+.send_btn{
+  background: #E0ECFF url('send.png') no-repeat  center;
+}
+

@@ -1,0 +1,5 @@
+[
+	{"id":"1","name":"风控管理","pid":"0","path":"","isbutton":"0","btnflag":""},
+	{"id":"2","name":"日行情分析","pid":"1","path":"/dayRiskAnalyse","isbutton":"0","btnflag":""},
+	{"id":"3","name":"买入操作建议","pid":"1","path":"/admin/alarm/actionmer","isbutton":"0","btnflag":""}
+]
