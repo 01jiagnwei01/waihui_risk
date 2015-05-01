@@ -1,0 +1,51 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"
+	default-autowire="byName" default-lazy-init="false">
+
+  
+<!-- 配置Hibernate事务管理器 -->
+    <bean id="transactionManager"
+        class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+      <property name="sessionFactory" ref="sessionFactory" />
+   </bean>
+    
+    <!--  声明式容器事务管理 ,transaction-manager指定事务管理器为transactionManager -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="add*" propagation="REQUIRED" isolation="DEFAULT"  rollback-for="Exception"/>
+            <tx:method name="update*" propagation="REQUIRED" isolation="DEFAULT"  rollback-for="Exception"/>
+            <tx:method name="delete*" propagation="REQUIRED" isolation="DEFAULT"  rollback-for="Exception"/>
+            <tx:method name="active*" propagation="REQUIRED" isolation="DEFAULT"  rollback-for="Exception"/>
+            <tx:method name="do*" propagation="REQUIRED" isolation="DEFAULT"   rollback-for="Exception"/>
+            <tx:method name="*Serializable" propagation="REQUIRED" isolation="SERIALIZABLE"  rollback-for="Exception"/><!-- 取款审核拒绝 -->
+            <tx:method name="get*" propagation="REQUIRED"  read-only="true"    isolation="DEFAULT"  rollback-for="Exception"/>
+            <tx:method name="*" propagation="REQUIRED"  read-only="true"    isolation="DEFAULT"  rollback-for="Exception"/>
+        </tx:attributes>
+    </tx:advice>
+    
+    <aop:config expose-proxy="true">
+        <!-- 只对业务逻辑层实施事务 -->
+        <aop:pointcut id="txPointcut" expression="execution(* cn.paypalm.risk.services.impl.*Impl.*(..))" />
+        <!-- Advisor定义，切入点和通知分别为txPointcut、txAdvice -->
+        <aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>
+    </aop:config>
+    
+     <aop:config expose-proxy="true">
+        <!-- 只对业务逻辑层实施事务 -->
+        <aop:pointcut id="txPointcut2" expression="execution(* cn.paypalm.risk.services.*.*(..))" />
+        <!-- Advisor定义，切入点和通知分别为txPointcut、txAdvice -->
+        <aop:advisor pointcut-ref="txPointcut2" advice-ref="txAdvice"/>
+    </aop:config>
+    
+   
+   
+</beans>

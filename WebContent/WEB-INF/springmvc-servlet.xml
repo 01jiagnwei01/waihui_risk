@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://springframework.org/schma/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	
+	<context:annotation-config />
+	<context:component-scan base-package="com.gxjk.risk.controllers" />
+	
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />  
+	 <bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		>
+		 <property name="prefix" value="/WEB-INF/pages/" />
+	    <property name="suffix" value=".jsp" />
+	</bean>
+	<mvc:annotation-driven />
+	 <mvc:interceptors>  
+           <mvc:interceptor>  
+                <!--某一模块拦截: /myPath/** ,拦截所有的请求: /** -->  
+                 <mvc:mapping path="/**"/>  
+					<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">  
+                 </bean>  
+             </mvc:interceptor> 
+	</mvc:interceptors> 
+	  <bean id="exceptionResolver" class="com.gxjk.risk.exceptions.CustomSimpleMappingExceptionResolver">
+		<property name="defaultErrorView" value="error/failure"></property>
+		<property name="exceptionAttribute" value="ex"></property>
+		<property name="exceptionMappings">
+			<props>
+				<prop key="cn.paypalm.risk.exceptions.BusinessException">error/error-business</prop>
+				<prop key="org.springframework.web.HttpRequestMethodNotSupportedException">exception/methodError</prop>
+				<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">error/error-business</prop>
+				<prop key="java.lang.Exception">error/500</prop>
+			</props>
+		</property>
+		<property name="defaultStatusCode" value="500"></property>
+	</bean>
+	 
+	 <mvc:resources mapping="/resources/**" location="/resources/" />
+	  
+</beans>

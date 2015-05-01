@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+ 	<property name="log.base" value="/soft/logs" />
+ 	<property name="log.name" value="risk_web" />
+ 	<property name="log.pattern" value="%X{usertype}-%X{userid} %date [%thread] %-5level %logger{80} - %msg%n" />
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${log.pattern}</pattern>
+		</encoder>
+	</appender>
+	<appender name="logfile"
+			class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+				<FileNamePattern> ${log.base}/${log.name}.%d{yyyy-MM-dd}.log</FileNamePattern>
+				<MaxHistory>30</MaxHistory>
+			</rollingPolicy>
+			<encoder>
+				<pattern>${log.pattern}</pattern>
+			</encoder>
+	</appender>
+	 
+	 
+	<logger name="cn.paypalm.tools.services" level="INFO" /><!-- TRACE、DEBUG、INFO、WARN和ERROR -->
+	<logger name="org.hibernate" level="WARN"/>
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="com.opensymphony" level="WARN"/>
+    <logger name="org.apache" level="WARN"/>
+ 
+    <!-- show parameters for hibernate sql 专为 Hibernate 定制 -->
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>
+    <logger name="org.hibernate.type.descriptor.sql.BasicExtractor" level="DEBUG"/>
+    <logger name="org.hibernate.SQL" level="DEBUG"/>
+    <logger name="org.hibernate.engine.QueryParameters" level="DEBUG"/>
+    <logger name="org.hibernate.engine.query.HQLQueryPlan" level="DEBUG"/>
+
+	<logger name="java.sql.PreparedStatement">  
+        <level value="DEBUG" />  
+    </logger>  
+    <logger name="java.sql.Connection">  
+        <level value="DEBUG" />  
+    </logger>  
+    <logger name="java.sql.Statement">  
+        <level value="DEBUG" />  
+    </logger>
+    <logger name="org.hibernate.engine.jdbc.internal">
+    	<level value="DEBUG" /> 
+    </logger>
+  	<logger name="org.apache.catalina.core">  
+        <level value="DEBUG" />  
+    </logger> 
+     
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="stdout" />
+		<appender-ref ref="logfile" />
+		 
+	</root>
+</configuration>
+

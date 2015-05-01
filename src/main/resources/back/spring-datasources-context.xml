@@ -1,0 +1,36 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"
+	default-autowire="byName" default-lazy-init="false">
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<!-- -->
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.31.110)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=dbpay)))" />
+		<property name="username" value="pp_risk" />
+		<property name="password" value="pp_risk" />
+		<property name="maxActive" value="6"/>
+		<property name="maxIdle" value="6"/>
+		<property name="maxWait" value="30000" />
+		<property name="minIdle" value="1"></property>
+		<property name="initialSize" value="1"></property>
+		<property name="validationQueryTimeout" value="1000"></property>
+		<property name="validationQuery" value="select * from t_p_tel_area where rowNum &lt;= 	1"></property>
+	</bean>
+	<!-- 
+	 <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName"><value>java:comp/env/jdbc/taobaoserver</value></property>
+    </bean>
+	
+	 -->
+	
+	
+</beans>
