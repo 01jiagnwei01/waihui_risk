@@ -1,5 +1,7 @@
 [
 	{"id":"1","name":"风控管理","pid":"0","path":"","isbutton":"0","btnflag":""},
-	{"id":"2","name":"日行情分析","pid":"1","path":"/dayRiskAnalyse","isbutton":"0","btnflag":""},
-	{"id":"3","name":"买入操作建议","pid":"1","path":"/admin/alarm/actionmer","isbutton":"0","btnflag":""}
+	{"id":"2","name":"买入操作分析","pid":"1","path":"/dayOperateAnalyse","isbutton":"0","btnflag":""},
+	{"id":"3","name":"卖空操作分析","pid":"1","path":"/dayRiskAnalyse","isbutton":"0","btnflag":""},
+	{"id":"4","name":"KDJ分析","pid":"1","path":"/kdjAnalyse","isbutton":"0","btnflag":""},
+	{"id":"5","name":"60分钟线确认卖点技巧","pid":"1","path":"/60minateAnalyse","isbutton":"0","btnflag":""}
 ]
