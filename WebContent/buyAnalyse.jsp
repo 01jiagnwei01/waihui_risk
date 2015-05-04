@@ -101,9 +101,6 @@ moxingData.append("[");
 	moxingData.append(",\"moXingProfitRange\":\"10-20\"");
 	moxingData.append("}");
 	
-	 
-	 
-	//http://www.forex.com.cn/html/c257/2012-03/2270421p12.htm
 moxingData.append("]");
 
 JSONArray jsonArrayData = JSONArray.parseArray(moxingData.toString());
