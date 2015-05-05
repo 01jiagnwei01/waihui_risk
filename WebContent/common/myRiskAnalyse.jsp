@@ -14,6 +14,17 @@ moxingData.append("[");
 	moxingData.append(",\"moXingStopLessRange\":\"10-20\"");
 	moxingData.append(",\"moXingProfitRange\":\"10-20\"");
 	moxingData.append("}");
+	moxingData.append("{\"id\":\"201505051600\"");
+	moxingData.append(",\"moXingName\":\"201505051600\"");
+	moxingData.append(",\"moXingImg\":\"\"");
+	moxingData.append(",\"moXingDesc\":\"今天是下跌的趋势，而且较缓和下降。这时群主在群里发分享，看跌。于是我就做了个空单，做止损15点。结果先下降，后上升。导致止损发生。赔了。此时时间点：16:15前。\"");
+	moxingData.append(",\"moXingSuggest\":\"资金量低，禁止操作。建议等大消息做适当操作。\"");
+	moxingData.append(",\"moXingOperateKeyPoint\":\"资金量低，需要理性分析。建议：禁止操作。\"");
+	moxingData.append(",\"moXingOperateAble\":\"1\"");
+	moxingData.append(",\"moXingRelativePoint\":\"10\"");
+	moxingData.append(",\"moXingStopLessRange\":\"10-20\"");
+	moxingData.append(",\"moXingProfitRange\":\"10-20\"");
+	moxingData.append("}");
 	
 	 
 	
